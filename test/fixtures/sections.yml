@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  schedule: one
+  teacher_subject: math_teacher_math
+  dow_mon: false
+  dow_tue: false
+  dow_wed: true
+  dow_thu: false
+  dow_fri: false
+  start_at: 08:00
+  end_at: 08:50
+  start_date: 2024-09-01
+  end_date: 2024-12-31
+
+two:
+  schedule: one
+  teacher_subject: math_and_english_teacher_english
+  dow_mon: false
+  dow_tue: false
+  dow_wed: true
+  dow_thu: false
+  dow_fri: false
+  start_at: 09:00
+  end_at: 09:50
+  start_date: 2024-09-01
+  end_date: 2024-12-31

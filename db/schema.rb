@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_103807) do
+ActiveRecord::Schema.define(version: 2024_08_03_093550) do
+
+  create_table "schedules", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.integer "schedule_id", null: false
+    t.integer "teacher_subject_id", null: false
+    t.boolean "dow_mon", default: false
+    t.boolean "dow_tue", default: false
+    t.boolean "dow_wed", default: false
+    t.boolean "dow_thu", default: false
+    t.boolean "dow_fri", default: false
+    t.time "start_at", null: false
+    t.time "end_at", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["schedule_id"], name: "index_sections_on_schedule_id"
+    t.index ["teacher_subject_id"], name: "index_sections_on_teacher_subject_id"
+  end
 
   create_table "subjects", force: :cascade do |t|
     t.string "name", null: false
@@ -37,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_08_24_103807) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "sections", "schedules"
+  add_foreign_key "sections", "teacher_subjects"
   add_foreign_key "teacher_subjects", "subjects"
   add_foreign_key "teacher_subjects", "teachers"
 end

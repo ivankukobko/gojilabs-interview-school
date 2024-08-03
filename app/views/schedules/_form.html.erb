@@ -1,0 +1,63 @@
+<%= form_with(model: schedule) do |form| %>
+  <% if schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+
+      <ul>
+        <% schedule.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.fields_for :sections do |s| %>
+    <table>
+      <tbody>
+        <tr>
+          <td width="160">
+            <%= s.label :teacher_subject %>
+            <%= s.select :teacher_subject_id, options_from_collection_for_select(TeacherSubject.all, :id, :to_s, s.object.teacher_subject_id),
+                                      { include_blank: true }, multiple: false %>
+          </td>
+          <td width="160">
+            <%= s.label :start_date %>
+            <%= s.date_field :start_date %>
+          </td>
+          <td width="160">
+            <%= s.label :end_date %>
+            <%= s.date_field :end_date %>
+          </td>
+          <td width="160">
+            <%= s.label :start_at %>
+            <%= s.time_field :start_at %>
+          </td>
+          <td width="160">
+            <%= s.label :end_at %>
+            <%= s.time_field :end_at %>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <% %i[dow_mon dow_tue dow_wed dow_thu dow_fri].each do |dow| %>
+            <td>
+              <%= s.label dow %>
+              <%= s.check_box dow %>
+            </td>
+          <% end %>
+          <td>
+            <% if s.object.persisted? %>
+              <%= s.label :_destroy %>
+              <%= s.check_box :_destroy %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr/>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

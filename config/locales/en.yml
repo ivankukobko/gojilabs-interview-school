@@ -38,3 +38,10 @@ en:
         zero: Class
         one: Class
         other: Classes
+    attributes:
+      section:
+        dow_mon: Monday
+        dow_tue: Tueday
+        dow_wed: Wednesday
+        dow_thu: Thursday
+        dow_fri: Friday

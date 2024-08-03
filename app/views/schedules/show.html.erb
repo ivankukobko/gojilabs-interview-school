@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th width="160">Monday</th>
+      <th width="160">Tuesday</th>
+      <th width="160">Wednesday</th>
+      <th width="160">Thursday</th>
+      <th width="160">Friday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% # list sections per day of week %>
+    <tr>
+      <td>
+        <% @schedule.sections.where(dow_mon: true).order(:start_at).each do |section| %>
+          <%= render section %>
+        <% end %>
+      </td>
+      <td>
+        <% @schedule.sections.where(dow_tue: true).order(:start_at).each do |section| %>
+          <%= render section %>
+        <% end %>
+      </td>
+      <td>
+        <% @schedule.sections.where(dow_wed: true).order(:start_at).each do |section| %>
+          <%= render section %>
+        <% end %>
+      </td>
+      <td>
+        <% @schedule.sections.where(dow_thu: true).order(:start_at).each do |section| %>
+          <%= render section %>
+        <% end %>
+      </td>
+      <td>
+        <% @schedule.sections.where(dow_fri: true).order(:start_at).each do |section| %>
+          <%= render section %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+<table>
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', schedules_path %>
