@@ -1,8 +1,8 @@
 <div class="section" id="section-<%= section.id%>">
   <strong>
-    <%= section.start_at&.strftime('%H:%M') %>
+    <%= l(section.start_at, format: :hours) if section.start_at %>
     —
-    <%= section.end_at&.strftime('%H:%M') %>
+    <%= l(section.end_at, format: :hours) if section.end_at %>
   </strong>
   <br/>
   <span><%= section.teacher_subject.to_s %></span>

@@ -30,8 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-en:
+  time:
+    formats:
+      hours: '%H:%M'
   activerecord:
     models:
       subject:
